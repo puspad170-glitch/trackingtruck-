@@ -148,21 +148,24 @@ export default function DaftarArmadaAccordion({
                           </div>
 
                           {/* Right action indicator */}
-                          <div className="flex flex-col items-end gap-1 shrink-0 pl-2">
-                            <span
-                              className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${vehicle.status === 'online'
-                                  ? 'bg-emerald-100 text-emerald-700'
-                                  : vehicle.status === 'perjalanan'
-                                    ? 'bg-amber-100 text-amber-700'
-                                    : 'bg-rose-100 text-rose-700'
-                                }`}
-                            >
-                              {vehicle.statusLabel}
-                            </span>
-                            <span className="text-[10px] font-bold text-blue-600 flex items-center gap-0.5">
-                              Pantau <MaterialIcon name="chevron_right" className="text-xs" />
-                            </span>
-                          </div>
+                        <div className="flex flex-col items-end gap-1 shrink-0 pl-2">
+                          <span
+                            className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${
+                              vehicle.status === 'online'
+                                ? 'bg-emerald-100 text-emerald-700'
+                                : vehicle.status === 'perjalanan'
+                                ? 'bg-amber-100 text-amber-700'
+                                : vehicle.statusLabel === 'Tersedia'
+                                ? 'bg-blue-100 text-blue-700'   // <-- Ini khusus untuk "Tersedia" jadi biru
+                                : 'bg-rose-100 text-rose-700'   // <-- Ini untuk status lain (seperti Maintenance) tetap merah
+                            }`}
+                          >
+                            {vehicle.statusLabel}
+                          </span>
+                          <span className="text-[10px] font-bold text-blue-600 flex items-center gap-0.5">
+                            Pantau <MaterialIcon name="chevron_right" className="text-xs" />
+                          </span>
+                        </div>
                         </div>
                       );
                     })
